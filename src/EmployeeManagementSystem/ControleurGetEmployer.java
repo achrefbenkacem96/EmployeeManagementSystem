@@ -19,4 +19,10 @@ public class ControleurGetEmployer implements ActionListener {
 		ResultSet users = userDAO.getAll();
 		vue.table.setModel(DbUtils.resultSetToTableModel(users));
 	}
+	private void initTable() {
+		userDAO = DAOFactory.getEleveImpl();
+		ResultSet users = userDAO.getAll();
+		vue.table.setModel(DbUtils.resultSetToTableModel(users));
+
+	}
 }

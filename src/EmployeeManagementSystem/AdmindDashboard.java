@@ -62,6 +62,17 @@ public class AdmindDashboard extends JFrame {
 		});
 		btnNewButton_1.setBounds(232, 90, 147, 48);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("déconnexion");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				Login frame = new Login();
+				frame.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(148, 160, 100, 32);
+		contentPane.add(btnNewButton_2);
 	}
 
 }

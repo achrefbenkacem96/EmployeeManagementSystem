@@ -111,7 +111,18 @@ public class CongeManagement extends JFrame {
 				}
 			}
 		});
-		refuser.setBounds(10, 124, 89, 23);
+		refuser.setBounds(10, 99, 89, 23);
 		contentPane.add(refuser);
+		
+		JButton btnretour = new JButton("Retour");
+		btnretour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				AdmindDashboard frame = new AdmindDashboard();
+				frame.setVisible(true);
+			}
+		});
+		btnretour.setBounds(10, 133, 89, 23);
+		contentPane.add(btnretour);
 	}
 }

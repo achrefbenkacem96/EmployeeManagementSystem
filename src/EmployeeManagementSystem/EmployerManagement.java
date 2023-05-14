@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,10 +20,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 
 public class EmployerManagement extends JFrame {
-
-	private JPanel contentPane;
+	DAO<User> userDAO;
+ 	private JPanel contentPane;
 	public JTable table;
 	public JTextField lastName;
 	public JTextField firstName;
@@ -48,8 +52,9 @@ public class EmployerManagement extends JFrame {
 	 * Create the frame.
 	 */
 	public EmployerManagement() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 417);
+		setBounds(100, 100, 758, 417);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -57,7 +62,7 @@ public class EmployerManagement extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(236, 27, 362, 340);
+		scrollPane.setBounds(236, 27, 496, 340);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -85,6 +90,9 @@ public class EmployerManagement extends JFrame {
 			    }
 			}
 		});
+		userDAO = DAOFactory.getEleveImpl();
+		ResultSet users = userDAO.getAll();
+		table.setModel(DbUtils.resultSetToTableModel(users));
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel = new JLabel("Nom");
@@ -129,7 +137,7 @@ public class EmployerManagement extends JFrame {
 		
 		JButton btnRefrech = new JButton("Refrech");
 		ControleurGetEmployer c1 = new ControleurGetEmployer(this);
-		btnRefrech.addActionListener(c1);
+ 		btnRefrech.addActionListener(c1);
 		btnRefrech.setBounds(10, 226, 92, 23);
 		contentPane.add(btnRefrech);
 		

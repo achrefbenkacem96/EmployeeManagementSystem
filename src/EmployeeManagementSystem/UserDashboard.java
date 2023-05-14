@@ -51,6 +51,17 @@ public class UserDashboard extends JFrame {
 		});
 		btnNewButton_1.setBounds(226, 95, 127, 47);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("déconnexion");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				Login frame = new Login();
+				frame.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(156, 165, 127, 23);
+		contentPane.add(btnNewButton_2);
 	}
 
 }
